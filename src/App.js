@@ -4,10 +4,10 @@ import Header from './components/header/header';
 import { useTg } from './components/hooks/useTg';
 
 function App() {
-  const {tg, onToggleButton} = useTg();
+  const {Ready, onToggleButton} = useTg();
 
   useEffect(()=>{
-    tg.ready();
+    Ready();
   },[])
 
   return (
