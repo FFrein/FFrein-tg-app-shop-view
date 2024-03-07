@@ -6,10 +6,6 @@ export function useTg(){
         tg.close()
     }
 
-    async function Ready(){
-        tg.ready();
-    }
-
     const onToggleButton = () =>{
         if(tg.MainButton.isVisible){
             tg.MainButton.hide();
@@ -22,8 +18,7 @@ export function useTg(){
     return{
         onClose,
         onToggleButton,
-        Ready,
+        tg,
         user: tg.initDataUnsafe?.user,
-        tg
     }
 }
