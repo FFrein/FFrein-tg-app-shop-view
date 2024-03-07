@@ -15,8 +15,8 @@ function App() {
 
   return (
     <div className="App">
-      work
-      <button onCLick={onClose}>Закрыть</button>
+      Люблю мою бубочку
+      <button onClick={onClose}>Закрыть</button>
     </div>
   );
 }
