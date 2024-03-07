@@ -6,7 +6,7 @@ export function useTg(){
         tg.close()
     }
 
-    const Ready = async ()=>{
+    async function Ready(){
         tg.ready();
     }
 
