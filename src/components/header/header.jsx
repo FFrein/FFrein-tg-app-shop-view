@@ -4,7 +4,7 @@ import { useTg } from "../hooks/useTg";
 
 const Header = (props)=>{
     
-    const {tg, user, onClose} = useTg();
+    const {user, onClose} = useTg();
 
     return (
         <div className={'header'}>

@@ -4,7 +4,7 @@ import Header from './components/header/header';
 import { useTg } from './components/hooks/useTg';
 
 function App() {
-  const {tg, user, onToggleButton} = useTg();
+  const {tg, onToggleButton} = useTg();
 
   useEffect(()=>{
     tg.ready();
