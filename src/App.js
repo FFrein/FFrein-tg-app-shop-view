@@ -8,7 +8,7 @@ function App() {
   
 
   useEffect(()=>{
-    let a = tg?.ready();
+    tg?.ready();
   },[])
 
   return (
