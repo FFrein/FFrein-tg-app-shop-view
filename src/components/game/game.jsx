@@ -33,18 +33,18 @@ const Game = (props) => {
   const status = winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? "X" : "O"}`;
 
   const {tg, sendData} = useTg();
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   const onSendData = useCallback(()=>{
     sendData(board);
   });
-  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     console.log("setParams");
     tg?.MainButton.setParams({
       text: "Отправить ход"
     });
   });
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     console.log("isMove");
     if (!isMove) {
@@ -53,7 +53,7 @@ const Game = (props) => {
       tg.MainButton.show();
     }
   });
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     console.log("onEvent");
     tg?.WebApp?.onEvent('mainButtonClicked', onSendData);
