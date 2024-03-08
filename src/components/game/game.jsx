@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./game.css";
 
 import { useTg } from "../hooks/useTg";
@@ -49,6 +49,20 @@ const Game = (props) => {
         tg.MainButton.show();
     }
   },[isMove, tg.MainButton])
+
+  const onSendData = useCallback(()=>{
+    const data ={
+        board
+    }
+    tg.SendData(JSON.stringify(data));
+  },[])
+
+    useEffect(()=>{
+        tg.WebApp.onEvent('mainButtonClicked', onSendData)
+        return ()=>{
+            tg.WebApp.offEvent('mainButtonClicked', onSendData)
+        }
+    },[tg.WebApp])
 
   return (
     <div>
