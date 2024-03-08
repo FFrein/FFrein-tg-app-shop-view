@@ -64,6 +64,8 @@ const Game = (props) => {
 
   return (
     <div>
+          <button onClick={onSendData}>asd</button>
+
       <div className="status">{status}</div>
       <div className="board">
         <div className="board-row">
