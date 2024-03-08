@@ -17,7 +17,7 @@ export function useTg(){
 
     const sendData = (data)=>{
         try{
-          tg.SendData(JSON.stringify(data));
+          tg.SendData(JSON.stringify({A:"ASD"}));
         }
         catch(e){
             console.log(e)
