@@ -32,22 +32,18 @@ const Game = (props) => {
   const winner = calculateWinner(board);
   const status = winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? "X" : "O"}`;
 
-  const {tg} = useTg();
+  const {tg, sendData} = useTg();
 
-  const onSendData = useCallback(() => {
-    console.log("onSendData");
-    const data = {
-      board,
-    };
-    tg?.SendData(JSON.stringify(data));
-  }, [board, tg]);
-
+  const onSendData = useCallback(()=>{
+    sendData(board);
+  });
+  
   useEffect(() => {
     console.log("setParams");
     tg?.MainButton.setParams({
       text: "Отправить ход"
     });
-  }, [tg.MainButton, onSendData]);
+  });
 
   useEffect(() => {
     console.log("isMove");
@@ -56,7 +52,7 @@ const Game = (props) => {
     } else {
       tg.MainButton.show();
     }
-  }, [isMove, tg.MainButton]);
+  });
 
   useEffect(() => {
     console.log("onEvent");
@@ -64,7 +60,7 @@ const Game = (props) => {
     return () => {
       tg?.WebApp?.offEvent('mainButtonClicked', onSendData);
     };
-  }, [tg.WebApp, onSendData]);
+  });
 
   return (
     <div>

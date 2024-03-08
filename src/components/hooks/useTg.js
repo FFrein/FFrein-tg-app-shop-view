@@ -15,9 +15,20 @@ export function useTg(){
         }
     }
 
+    const sendData = (data)=>{
+        try{
+          tg.SendData(JSON.stringify(data));
+        }
+        catch(e){
+            console.log(e)
+        }
+    };
+    
+
     return{
         onClose,
         onToggleButton,
+        sendData,
         tg,
         user: tg.initDataUnsafe?.user,
     }
