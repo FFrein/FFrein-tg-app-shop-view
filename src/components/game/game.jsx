@@ -6,12 +6,14 @@ import { useTg } from "../hooks/useTg";
 const Game = (props) => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
+  const [isMove, setMove] = useState(false);
 
   const handleClick = (index) => {
     if (board[index] || calculateWinner(board)) {
       // Не позволяйте изменять уже занятые клетки или если уже есть победитель
       return;
     }
+    setMove(true);
 
     const newBoard = board.slice();
     newBoard[index] = xIsNext ? "X" : "O";
@@ -38,6 +40,15 @@ const Game = (props) => {
     }
     )
   },[tg.MainButton])
+
+  useEffect(()=>{
+    if(!isMove){
+        tg.MainButton.hide();
+    }
+    else{
+        tg.MainButton.show();
+    }
+  },[isMove, tg.MainButton])
 
   return (
     <div>
