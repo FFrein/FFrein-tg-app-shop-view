@@ -1,10 +1,12 @@
 //import { useEffect } from 'react';
 import './App.css';
+import Game from './components/game/game';
 import Header from './components/header/header';
-import { useTg } from './components/hooks/useTg';
-
+//import { useTg } from './components/hooks/useTg';
+import Lobby from './components/lobby/lobby';
+import { Route, Routes } from 'react-router-dom';
 function App() {
-  const {onToggleButton} = useTg();
+  //const {onToggleButton} = useTg();
   
 /*
   useEffect(()=>{
@@ -13,9 +15,11 @@ function App() {
 */
   return (
     <div className="App">
-      LOVE
       <Header></Header>
-      <button onClick={onToggleButton}>toggle</button>
+      <Routes>
+        <Route index element={<Lobby/>}></Route>
+        <Route path={'game'} element={<Game/>}></Route>
+      </Routes>
     </div>
   );
 }
