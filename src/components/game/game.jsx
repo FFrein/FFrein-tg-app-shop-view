@@ -34,35 +34,33 @@ const Game = (props) => {
 
   const {tg} = useTg();
 
-  useEffect(()=>{
-    tg.MainButton.setParams({
-        text:"Отправить ход"
-    }
-    )
-  },[tg.MainButton])
-
-  useEffect(()=>{
-    if(!isMove){
-        tg.MainButton.hide();
-    }
-    else{
-        tg.MainButton.show();
-    }
-  },[isMove, tg.MainButton])
-
-  const onSendData = useCallback(()=>{
-    const data ={
-        board
-    }
+  const onSendData = useCallback(() => {
+    const data = {
+      board,
+    };
     tg.SendData(JSON.stringify(data));
-  },[])
+  }, [board, tg]);
 
-    useEffect(()=>{
-        tg.WebApp.onEvent('mainButtonClicked', onSendData)
-        return ()=>{
-            tg.WebApp.offEvent('mainButtonClicked', onSendData)
-        }
-    },[tg.WebApp])
+  useEffect(() => {
+    tg.MainButton.setParams({
+      text: "Отправить ход"
+    });
+  }, [tg.MainButton, onSendData]);
+
+  useEffect(() => {
+    if (!isMove) {
+      tg.MainButton.hide();
+    } else {
+      tg.MainButton.show();
+    }
+  }, [isMove, tg.MainButton]);
+
+  useEffect(() => {
+    tg?.WebApp?.onEvent('mainButtonClicked', onSendData);
+    return () => {
+      tg?.WebApp?.offEvent('mainButtonClicked', onSendData);
+    };
+  }, [tg.WebApp, onSendData]);
 
   return (
     <div>
