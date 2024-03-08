@@ -36,7 +36,13 @@ const Game = (props) => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
   const onSendData = useCallback(()=>{
     sendData(board);
+    tg.WebApp.sendData("asd");
   });
+// eslint-disable-next-line react-hooks/exhaustive-deps
+  function senddd(){
+    sendData(board);
+    tg.WebApp.sendData("asd");
+  }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     console.log("setParams");
@@ -64,8 +70,8 @@ const Game = (props) => {
 
   return (
     <div>
-          <button onClick={onSendData}>asd</button>
-
+      <button onClick={onSendData}>asd</button>
+      <button onClick={senddd}>asd</button>
       <div className="status">{status}</div>
       <div className="board">
         <div className="board-row">
