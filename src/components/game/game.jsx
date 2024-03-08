@@ -35,19 +35,22 @@ const Game = (props) => {
   const {tg} = useTg();
 
   const onSendData = useCallback(() => {
+    console.log("onSendData");
     const data = {
       board,
     };
-    tg.SendData(JSON.stringify(data));
+    tg?.SendData(JSON.stringify(data));
   }, [board, tg]);
 
   useEffect(() => {
-    tg.MainButton.setParams({
+    console.log("setParams");
+    tg?.MainButton.setParams({
       text: "Отправить ход"
     });
   }, [tg.MainButton, onSendData]);
 
   useEffect(() => {
+    console.log("isMove");
     if (!isMove) {
       tg.MainButton.hide();
     } else {
@@ -56,6 +59,7 @@ const Game = (props) => {
   }, [isMove, tg.MainButton]);
 
   useEffect(() => {
+    console.log("onEvent");
     tg?.WebApp?.onEvent('mainButtonClicked', onSendData);
     return () => {
       tg?.WebApp?.offEvent('mainButtonClicked', onSendData);

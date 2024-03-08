@@ -5,11 +5,7 @@ export function useTg(){
     const onClose = () =>{
         tg.close()
     }
-    /*
-    const setPoint = ()=>{
-        tg.
-    }
-    */
+
     const onToggleButton = () =>{
         if(tg.MainButton.isVisible){
             tg.MainButton.hide();
