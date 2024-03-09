@@ -8,10 +8,7 @@ import { Route, Routes } from 'react-router-dom';
 
 function App() {
   const {tg} = useTg();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(()=>{
-    tg?.ready();
-  })
+
 
   return (
     <div className="App">
