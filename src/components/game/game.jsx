@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./game.css";
-
 import { useTg } from "../hooks/useTg";
 
 const Game = (props) => {
@@ -60,8 +59,6 @@ const Game = (props) => {
       tg.MainButton.hide();
     } else {
       tg.MainButton.show();
-      tg.MainButton.enable()
-      tg.MainButton.onClick(onSendData)
     }
   });
 
