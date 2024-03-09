@@ -32,17 +32,11 @@ const Game = (props) => {
   const status = winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? "X" : "O"}`;
 
   const {tg, sendData} = useTg();
-// eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const onSendData = useCallback(()=>{
     sendData(board);
     tg.WebApp.sendData("asd");
   });
-
-// eslint-disable-next-line react-hooks/exhaustive-deps
-  function senddd(){
-    sendData(board);
-    tg.WebApp.sendData("asd");
-  }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -52,30 +46,30 @@ const Game = (props) => {
     });
   });
 
-// eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     console.log("isMove");
     if (!isMove) {
       tg.MainButton.hide();
     } else {
       tg.MainButton.show();
+      tg.MainButton.enable();
+      tg.MainButton.onClick(onSendData);
     }
   });
 
-  //let tgg = window.Telegram.WebApp;
-// eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     console.log("onEvent");
-    tg.WebApp.onEvent('mainButtonClicked', function(){tg.WebApp.sendData("asd")});
+    tg.WebApp?.onEvent('mainButtonClicked', onSendData);
     return () => {
-      tg.WebApp.onEvent('mainButtonClicked', onSendData);
+      tg.WebApp?.onEvent('mainButtonClicked', onSendData);
     };
   });
 
   return (
     <div>
-      <button onClick={onSendData}>asd</button>
-      <button onClick={senddd}>asd</button>
+      <button onClick={onSendData}>onSendData</button>
       <div className="status">{status}</div>
       <div className="board">
         <div className="board-row">
