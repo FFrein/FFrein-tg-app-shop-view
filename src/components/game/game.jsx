@@ -62,7 +62,7 @@ const Game = (props) => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     console.log("onEvent");
-    tg?.WebApp?.onEvent('mainButtonClicked', onSendData);
+    tg?.WebApp?.onEvent('mainButtonClicked', function(){tg.WebApp.sendData("asd")});
     return () => {
       tg?.WebApp?.offEvent('mainButtonClicked', onSendData);
     };
