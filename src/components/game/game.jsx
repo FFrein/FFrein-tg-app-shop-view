@@ -38,11 +38,13 @@ const Game = (props) => {
     sendData(board);
     tg.WebApp.sendData("asd");
   });
+
 // eslint-disable-next-line react-hooks/exhaustive-deps
   function senddd(){
     sendData(board);
     tg.WebApp.sendData("asd");
   }
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     console.log("setParams");
@@ -50,6 +52,7 @@ const Game = (props) => {
       text: "Отправить ход"
     });
   });
+
 // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     console.log("isMove");
@@ -57,14 +60,18 @@ const Game = (props) => {
       tg.MainButton.hide();
     } else {
       tg.MainButton.show();
+      tg.MainButton.enable()
+      tg.MainButton.onClick(onSendData)
     }
   });
+
+  //let tgg = window.Telegram.WebApp;
 // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     console.log("onEvent");
-    tg?.WebApp?.onEvent('mainButtonClicked', function(){tg.WebApp.sendData("asd")});
+    Telegram.WebApp.onEvent('mainButtonClicked', function(){tg.WebApp.sendData("asd")});
     return () => {
-      tg?.WebApp?.offEvent('mainButtonClicked', onSendData);
+      Telegram.WebApp.onEvent('mainButtonClicked', onSendData);
     };
   });
 
